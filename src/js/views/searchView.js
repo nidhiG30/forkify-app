@@ -1,33 +1,3 @@
-// 296. Implementing Search Results - Part 1
-/*
-class searchView {
-  #parentEl = document.querySelector('.search')
-
-  getQuery() {
-    const query = this.#parentEl.querySelector('.search__field').value;
-    this.#clearInput();
-    return query;
-  }
-
-  #clearInput() {
-    this.#parentEl.querySelector('.search__field').value = '';
-  }
-
-  addHandlerSearch(handler) {
-    this.#parentEl.addEventListener('submit', function(e) {
-      e.preventDefault();
-      handler();
-    });
-  }
-}
-
-export default new searchView();
-
-*/
-//----------------------------------------------------------------------------------------------------------------
-
-// 297. Implementing Search Results - Part 2
-
 class searchView {
   _parentEl = document.querySelector('.search');
 

@@ -1,5 +1,3 @@
-// 299. Implementing Pagination - Part 2
-
 import View from './View.js';
 import icons from 'url:../../img/icons.svg';
 
