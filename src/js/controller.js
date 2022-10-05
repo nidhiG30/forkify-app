@@ -7,14 +7,6 @@ import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
 
-// import 'core-js/stable';
-// import 'regenerator-runtime/runtime';
-// import { async } from 'regenerator-runtime';
-
-// if(module.hot) {
-//   module.hot.accept();
-// }
-
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -51,7 +43,6 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);
 
     // 3. Render results
-    // resultsView.render(model.state.search.results); // to fetch all the search results in the same page
     resultsView.render(model.getSearchResultsPage()); // passing no page no. is equal to setting it to page 1
 
     // 4. Render initial pagination buttons
@@ -64,7 +55,6 @@ controlSearchResults();
 
 const controlPagination = function (goToPage) {
   // 1. Render NEW results
-  // resultsView.render(model.state.search.results); // to fetch all the search results in the same page
   resultsView.render(model.getSearchResultsPage(goToPage));
 
   // 2. Render NEW pagination buttons
@@ -76,7 +66,6 @@ const controlServings = function (newServings) {
   model.updateServings(newServings);
 
   // Update the recipe view
-  // recipeView.render(model.state.recipe);
   recipeView.update(model.state.recipe); // update' avoids rerendering the entire view
 };
 
@@ -100,7 +89,7 @@ const controlAddRecipe = async function (newRecipe) {
   try {
     // Show loading spinner
     addRecipeView.renderSpinner();
-    
+
     // Upload the new recipe data
     await model.uploadRecipe(newRecipe);
     console.log(model.state.recipe);
@@ -127,10 +116,6 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
-const newFeature = function() {
-  console.log('Welcome to the application!');
-}
-
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
@@ -139,7 +124,6 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
-  newFeature();
 };
 
 init();
